@@ -1,5 +1,9 @@
 package com.bocelli.ifsp.tcp.model;
 
+import com.bocelli.ifsp.tcp.model.utils.Validator;
+
+import java.util.Objects;
+
 public class Vehicle {
     private String carPlateLetters;
     private Integer carPlateNumbers;
@@ -15,12 +19,29 @@ public class Vehicle {
     private String color;
     private String features;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(carPlateLetters, carPlateNumbers, carPlateCity, carPlateState);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if ((o instanceof Vehicle) && ((Vehicle) o).getCarPlateLetters().equals(this.getCarPlateLetters()) &&
+                ((Vehicle) o).getCarPlateNumbers().equals(this.getCarPlateNumbers()) &&
+                ((Vehicle) o).getCarPlateCity().equals(this.getCarPlateCity()) &&
+                ((Vehicle) o).getCarPlateState().equals(this.getCarPlateState())) {
+            return true;
+        } else
+            return false;
+    }
+
     public String getCarPlateLetters() {
         return carPlateLetters;
     }
 
     public void setCarPlateLetters(String carPlateLetters) {
-        this.carPlateLetters = carPlateLetters;
+        if(!Validator.isPlateLetters(carPlateLetters)) throw new IllegalArgumentException("Letras de placa inválidas!");
+        this.carPlateLetters = carPlateLetters.toUpperCase();
     }
 
     public Integer getCarPlateNumbers() {
@@ -28,6 +49,7 @@ public class Vehicle {
     }
 
     public void setCarPlateNumbers(Integer carPlateNumbers) {
+        if(!Validator.isPlateNumbers(Integer.toString(carPlateNumbers)));
         this.carPlateNumbers = carPlateNumbers;
     }
 
@@ -36,7 +58,8 @@ public class Vehicle {
     }
 
     public void setCarPlateCity(String carPlateCity) {
-        this.carPlateCity = carPlateCity;
+        if(carPlateCity == null || carPlateCity.isEmpty()) throw new IllegalArgumentException("Cidade inválida!");
+        this.carPlateCity = carPlateCity.toUpperCase();
     }
 
     public String getCarPlateState() {
@@ -44,7 +67,9 @@ public class Vehicle {
     }
 
     public void setCarPlateState(String carPlateState) {
-        this.carPlateState = carPlateState;
+        if(carPlateState == null || carPlateState.isEmpty()) throw new IllegalArgumentException("Estado Inválido!");
+        if(!Validator.isPlateUf(carPlateState)) if(carPlateState == null || carPlateState.isEmpty()) throw new IllegalArgumentException("Estado Inválido!");
+        this.carPlateState = carPlateState.toUpperCase();
     }
 
     public String getType() {
@@ -76,6 +101,7 @@ public class Vehicle {
     }
 
     public void setYear(Integer year) {
+        if(!Validator.isFullYear(Integer.toString(year))) throw new IllegalArgumentException("Ano Inválido!");
         this.year = year;
     }
 
@@ -100,6 +126,11 @@ public class Vehicle {
     }
 
     public void setFuel(String fuel) {
+        fuel = fuel.toUpperCase();
+        if(fuel != "GASOLINA" && fuel != "ALCOOL" &&
+                fuel != "FLEX" && fuel != "DIESEL" &&
+                fuel != "ELÉTRICO" && fuel != "HÍBRIDO")
+            throw new IllegalArgumentException("Combustível Inválido!");
         this.fuel = fuel;
     }
 

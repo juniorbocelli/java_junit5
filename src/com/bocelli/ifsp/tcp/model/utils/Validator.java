@@ -43,4 +43,14 @@ public class Validator {
         String pattern = "^[0-9]{4}$";
         return  applyPattern(pattern, input);
     }
+
+    public static boolean isFullYear(String input) {
+        String pattern = "^[0-9]{4}$";
+        return  applyPattern(pattern, input);
+    }
+
+    public static boolean isPlateUf(String input) {
+        String pattern = "^[A-Z]{2}$";
+        return  applyPattern(pattern, input.toUpperCase());
+    }
 }
