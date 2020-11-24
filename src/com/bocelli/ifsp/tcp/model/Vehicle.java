@@ -77,6 +77,7 @@ public class Vehicle {
     }
 
     public void setType(String type) {
+        if(type == null || type.isEmpty()) throw new IllegalArgumentException("Tipo inválido!");
         this.type = type;
     }
 
@@ -85,6 +86,7 @@ public class Vehicle {
     }
 
     public void setBrand(String brand) {
+        if(brand == null || brand.isEmpty()) throw new IllegalArgumentException("Marca inválida!");
         this.brand = brand;
     }
 
@@ -93,6 +95,7 @@ public class Vehicle {
     }
 
     public void setModel(String model) {
+        if(model == null || model.isEmpty()) throw new IllegalArgumentException("Modelo inválido!");
         this.model = model;
     }
 
@@ -110,6 +113,7 @@ public class Vehicle {
     }
 
     public void setDoor(Integer door) {
+        if(door == null || door <= 0) throw new IllegalArgumentException("Número de portas inválida!");
         this.door = door;
     }
 
@@ -118,6 +122,7 @@ public class Vehicle {
     }
 
     public void setSeats(Integer seats) {
+        if(seats == null || seats <= 0) throw new IllegalArgumentException("Número de assentos inválida!");
         this.seats = seats;
     }
 
@@ -139,6 +144,7 @@ public class Vehicle {
     }
 
     public void setColor(String color) {
+        if(color == null || color.isEmpty()) throw new IllegalArgumentException("Cor inválida!");
         this.color = color;
     }
 
@@ -147,6 +153,7 @@ public class Vehicle {
     }
 
     public void setFeatures(String features) {
+        if(features == null || features.isEmpty()) throw new IllegalArgumentException("Acessórios inválidos!");
         this.features = features;
     }
 }
