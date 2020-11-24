@@ -10,7 +10,7 @@ public class Mechanic {
     private String name;
     private LocalDate dateOfBirth;
     private String gender;
-    private Float salary;
+    private String salary;
     private String email;
     private String phone;
 
@@ -74,11 +74,11 @@ public class Mechanic {
         this.gender = gender.toUpperCase();
     }
 
-    public Float getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Float salary) {
+    public void setSalary(String salary) {
         if(!Validator.isMoney(salary.toString())) throw new IllegalArgumentException("Salário inválido!");
         this.salary = salary;
     }

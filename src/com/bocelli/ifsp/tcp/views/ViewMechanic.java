@@ -106,15 +106,31 @@ public class ViewMechanic {
             }
         } while (flag == false);
 
-        // Digite a Data de Nascimento
+        // Sexo
         flag = false;
         do {
-            System.out.println("Digite a Data de Nascimento dd/mm/YYYY -> ");
-            String dateBirth = input.nextLine();
+            System.out.println("Digite o sexo M/F -> ");
+            String gender = input.nextLine();
 
-            if(dateBirth.equals("exit") || dateBirth.equals("-1")) return null;
+            if(gender.equals("exit") || gender.equals("-1")) return null;
             try {
-                mechanic.setDateOfBirth(dateBirth);
+                mechanic.setGender(gender);
+                flag = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        } while (flag == false);
+
+        // Sexo
+        flag = false;
+        do {
+            System.out.println("Digite o sexo M/F -> ");
+            String gender = input.nextLine();
+
+            if(gender.equals("exit") || gender.equals("-1")) return null;
+            try {
+                mechanic.setGender(gender);
                 flag = true;
             } catch (Exception e) {
                 e.printStackTrace();
