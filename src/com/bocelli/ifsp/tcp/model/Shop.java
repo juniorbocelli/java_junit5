@@ -51,6 +51,10 @@ public class Shop {
         }
     }
 
+    public ArrayList<Mechanic> getMechanicList() {
+        return (ArrayList<Mechanic>) mechanics;
+    }
+
 
     public boolean addVehicle(Vehicle vehicle) {
         if(vehicles.indexOf(vehicle) != -1) return false;
@@ -89,5 +93,9 @@ public class Shop {
         for(int i = 0; i < vehicles.size(); i++) {
             System.out.println(Integer.toString(i) + vehicles.get(i).toString());
         }
+    }
+
+    public ArrayList<Vehicle> getVehicleList() {
+        return (ArrayList<Vehicle>) vehicles;
     }
 }

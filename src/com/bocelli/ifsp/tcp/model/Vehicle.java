@@ -19,6 +19,26 @@ public class Vehicle {
     private String color;
     private String features;
 
+    public Vehicle() {
+
+    }
+
+    public Vehicle(String carPlateLetters, Integer carPlateNumbers, String carPlateCity, String carPlateState, String type, String brand, String model, Integer year, Integer door, Integer seats, String fuel, String color, String features) {
+        this.carPlateLetters = carPlateLetters;
+        this.carPlateNumbers = carPlateNumbers;
+        this.carPlateCity = carPlateCity;
+        this.carPlateState = carPlateState;
+        this.type = type;
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.door = door;
+        this.seats = seats;
+        this.fuel = fuel;
+        this.color = color;
+        this.features = features;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(carPlateLetters, carPlateNumbers, carPlateCity, carPlateState);

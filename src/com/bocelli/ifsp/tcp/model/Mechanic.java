@@ -14,8 +14,18 @@ public class Mechanic {
     private String email;
     private String phone;
 
-    public String getCpf() {
-        return cpf;
+    public Mechanic() {
+
+    }
+
+    public Mechanic(String cpf, String name, String dateOfBirth, String gender, String salary, String email, String phone) {
+        this.cpf = cpf;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.salary = salary;
+        this.email = email;
+        this.phone = phone;
     }
 
     @Override
@@ -29,6 +39,10 @@ public class Mechanic {
             return true;
         } else
             return false;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public void setCpf(String cpf) {
