@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Mechanic {
     private String cpf;
     private String name;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String gender;
     private String salary;
     private String email;
@@ -46,7 +46,7 @@ public class Mechanic {
         this.name = name;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -62,7 +62,7 @@ public class Mechanic {
             throw new IllegalArgumentException("Data inicial inválida!");
         }
 
-        this.dateOfBirth = newTime;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
