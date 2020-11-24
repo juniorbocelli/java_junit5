@@ -78,4 +78,57 @@ public class ShopTest {
                 ()->assertEquals(secondMechanic, shop.getMechanic(0)),
                 ()->assertSame(secondMechanic, shop.getMechanic(0)));
     }
+
+
+    @Test
+    @Order(5)
+    @DisplayName("Testando adição de veículo")
+    public void addVehicle() {
+        ArrayList<Vehicle> my_array = new ArrayList<>();
+        my_array.add(initialVehicle);
+
+        assertAll("shop",
+                ()->assertTrue(shop.addVehicle(initialVehicle)),
+                ()->assertFalse(shop.addVehicle(initialVehicle)),
+                ()->assertIterableEquals(my_array, shop.getVehicleList()));
+    }
+
+    @Test
+    @Order(6)
+    @DisplayName("Testando visualização de um veículo")
+    public void getVehicle() {
+        shop.addVehicle(initialVehicle);
+
+        assertAll("shop",
+                ()->assertEquals(initialVehicle, shop.getVehicle(0)),
+                ()->assertSame(initialVehicle, shop.getVehicle(0)));
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Testando remoção de um veículo")
+    public void removeVehicle() {
+        shop.addVehicle(initialVehicle);
+        Vehicle secondVehicle = new Vehicle("ABC", 1234, "São Carlos", "SP", "Passeio", "Peugeot", "Sport", 2000, 3, 4, "GASOLINA", "AZUL", "Comum");
+        shop.addVehicle(secondVehicle);
+
+        assertAll("shop",
+                ()->assertTrue(shop.removeVehicle(initialVehicle)),
+                ()->assertEquals(secondVehicle, shop.getVehicle(0)),
+                ()->assertSame(secondVehicle, shop.getVehicle(0)));
+    }
+
+    @Test
+    @Order(8)
+    @DisplayName("Testando edição de um veículo")
+    public void editVehicle() {
+        shop.addVehicle(initialVehicle);
+        Vehicle secondVehicle = new Vehicle("AAA", 1234, "São Carlos", "SP", "Passeio", "Peugeot", "Sport", 2000, 3, 4, "GASOLINA", "AZUL", "Comum");
+        Vehicle vehicleToEdit = shop.getVehicle(0);
+        vehicleToEdit.setCarPlateLetters("AAA");
+
+        assertAll("shop",
+                ()->assertEquals(secondVehicle, shop.getMechanic(0)),
+                ()->assertSame(secondVehicle, shop.getMechanic(0)));
+    }
 }
